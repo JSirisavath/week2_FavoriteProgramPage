@@ -1,0 +1,22 @@
+.psudoCodeSnippetContainer pre {
+  white-space: pre-wrap;
+  background-color: #000000;
+  color: #8f8ffe;
+  padding: 2rem;
+}
+
+.favoriteProgramTitle {
+  font-family: 'Anton', sans-serif;
+}
+
+p {
+  font-family: 'Public Sans', sans-serif;
+}
+
+.jumbotron {
+  background-color: #f0ffff;
+}
+
+body {
+  background-color: #ffd3af;
+}

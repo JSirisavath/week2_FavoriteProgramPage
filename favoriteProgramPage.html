@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorite Program Page</title>
+
+    <!-- bootstrap css styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+
+    <!-- styles css -->
+    <link
+      rel="stylesheet"
+      href="styles.css"
+      <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Public+Sans:wght@200&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron header m-3">
+        <h1 class="favoriteProgramTitle m-2">Java's Ticket Store</h1>
+
+        <p class="shortDescriptionForProgram">
+          This program resembles and virtualized a ticket system for submitting
+          open or resolved tickets on tech issues. This has a psudo "server"
+          class file that is called the, "controller" where it handles users
+          input requests to both the UI and contents to the ticket store
+          database using SQLite. This program was fun to make as it challenged
+          me to think and problem solve. Even though it was a challenging
+          program to make, I learned a lot about planning and as well combining
+          what I learned throughout the Java course.
+        </p>
+
+        <div class="row">
+          <div class="col-md-12 col-lg-6">
+            <div class="psudoCodeSnippetContainer">
+              <pre>
+            <code>
+            // A Java Program that is a ticket case system and uses a GUI UI and SQLite as a database.
+            // This is a snippet to add a open case ticket to the database from the TicketStore.
+
+            /** Add ticket to the database. */
+    public void add(Ticket newTicket) throws SQLException {
+        
+       
+
+        String insertSQLStatement = "INSERT INTO ticket (description, priority, reporter, dateReported,resolution, dateResolved, status) VALUES (?,?,?,?,?,?,?)";
+
+        try (Connection connection = DriverManager.getConnection(dbURI);PreparedStatement statement  = connection.prepareStatement(insertSQLStatement, Statement.RETURN_GENERATED_KEYS);) {
+
+            //Setting my prepared statements
+            statement.setString(1,newTicket.getDescription());
+            statement.setInt(2,newTicket.getPriority());
+
+            statement.setString(3,newTicket.getReporter());
+
+            statement.setLong(4,newTicket.getDateReported().getTime());
+
+//            Ticket.TicketStatus status = Ticket.TicketStatus.; // it will be open when created
+//            String statusAsString = newTicket.status.name();
+
+            
+
+            if (newTicket.getStatus() == Ticket.TicketStatus.RESOLVED) { // if the ticket was resolved, get the time for that date resolved (Was confused as I thought I only needed to add this part in the ticket UI only.
+                statement.setLong(6,newTicket.getDateResolved().getTime());
+            } else {
+                statement.setNull(6,Types.TIMESTAMP); // else it will be null, also meaning it will be open
+            }
+
+
+     
+
+            </code>
+        </pre>
+            </div>
+            <a
+              id="gitHubProgramLink"
+              href="https://github.com/mctc-itec/lab-11-extra-credit-gui-database-JayMCTC"
+              target="_blank"
+              >Ticket Store Program - github
+            </a>
+            <!-- End of psduo code container div -->
+          </div>
+
+          <!-- End of class div -->
+        </div>
+
+        <!-- End of jumbotron div -->
+      </div>
+
+      <!-- End of container div -->
+    </div>
+  </body>
+</html>
